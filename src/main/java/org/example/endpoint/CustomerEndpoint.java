@@ -6,6 +6,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import org.example.data.Customer;
+import org.example.data.UserAccount;
 import org.example.service.CustomerService;
 
 import java.util.List;
@@ -17,11 +18,17 @@ public class CustomerEndpoint {
     private CustomerService service;
 
     @GET
-    @Path("/world")
+    @Path("/customer")
     @Produces(value = MediaType.APPLICATION_JSON)
-    public List<Customer> hello() {
-        service.save();
-        return service.findAll();
+    public List<Customer> findAllCustomers() {
+        return service.findAllCustomers();
+    }
+
+    @GET
+    @Path("/user")
+    @Produces(value = MediaType.APPLICATION_JSON)
+    public List<UserAccount> findAllUsers() {
+        return service.findAllUsers();
     }
 
 }
